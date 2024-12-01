@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global CSS (por ejemplo, en styles/globals.css) */
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Firefox */
+* {
+  scrollbar-width: none; /* Oculta la scrollbar en Firefox */
+}
+
+/* Chrome, Safari y Edge */
+*::-webkit-scrollbar {
+  display: none; /* Oculta la scrollbar en Chrome, Safari y Edge */
+}
+
+
+.block {
+  overflow: visible;
+}
+
+/* Estilos generales */
+.react-calendar {
+  background-color: #000000; /* Gris oscuro */
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+}
+
+/* Encabezado del calendario */
+.react-calendar__navigation {
+  background-color: #4b5563; /* Gris más claro */
+  color: rgb(0, 0, 0);
+}
+
+.react-calendar__navigation button {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+
+/* Días del calendario */
+.react-calendar__month-view__days__day {
+  border-radius: 6px;
+  padding: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.react-calendar__tile--active {
+  background-color: #2563eb; /* Azul intenso */
+  color: white;
+  border-radius: 50%;
+}
+
+.react-calendar__tile--now {
+  background-color: #4b5563; /* Gris más claro */
+  color: white;
+}
+
+.react-calendar__tile:hover {
+  background-color: #2563eb;
+  color: white;
+  border-radius: 50%;
+}

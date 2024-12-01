@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model BebidasDisponibles {
+  id                 Int               @id @default(autoincrement())
+  nombre             String
+  precio             Float
+  cantidadDisponible Int
+  categoria          String?
+  BebidasVendidas    BebidasVendidas[]
+}
+
+model BebidasVendidas {
+  idVenta            Int                @id @default(autoincrement())
+  idBebida           Int
+  cantidadVendida    Int
+  fechaVenta         DateTime           @default(now())
+  totalVenta         Float
+  codigoCompra       String             @unique
+  nombreUsuario      String
+  BebidasDisponibles BebidasDisponibles @relation(fields: [idBebida], references: [id])
+  BebidasReclamadas  BebidasReclamadas? // Relación sin `fields` ni `references`
+}
+
+model BebidasReclamadas {
+  idReclamacion    Int             @id @default(autoincrement())
+  idVenta          Int             @unique
+  nombreUsuario    String
+  fechaReclamacion DateTime        @default(now())
+  BebidasVendidas  BebidasVendidas @relation(fields: [idVenta], references: [idVenta]) // Relación principal
+}
